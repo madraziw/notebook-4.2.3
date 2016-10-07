@@ -8,7 +8,6 @@
 data-base-url="{{base_url | urlencode}}"
 data-notebook-path="{{notebook_path | urlencode}}"
 data-terminals-available="{{terminals_available}}"
-
 {% endblock %}
 
 
@@ -17,21 +16,23 @@ data-terminals-available="{{terminals_available}}"
   <div id="ipython-main-app" class="container">
     <div id="tab_content" class="tabbable">
       <ul id="tabs" class="nav nav-tabs">
-        <li class="active"><a href="#notebooks" data-toggle="tab">Files</a></li>
-        <li><a href="#running" data-toggle="tab">Running</a></li>
-        <li><a href="#clusters" data-toggle="tab" class="clusters_tab_link" >Clusters</a></li>
+        <li class="active"><a href="#notebooks" data-toggle="tab">Files 檔案</a></li>
+        <li><a href="#running" data-toggle="tab">Running 執行中</a></li>
+        <li><a href="#clusters" data-toggle="tab" class="clusters_tab_link" >Clusters 群聚</a></li>
       </ul>
       <div class="tab-content">
         <div id="notebooks" class="tab-pane active">
           <div id="notebook_toolbar" class="row">
             <div class="col-sm-8 no-padding">
               <div class="dynamic-instructions">
-                Select items to perform actions on them.
+                Select items to perform actions on them.請選擇項目執行動作
               </div>
               <div class="dynamic-buttons">
-                  <button title="Duplicate selected" class="duplicate-button btn btn-default btn-xs">Duplicate</button>
-                  <button title="Rename selected" class="rename-button btn btn-default btn-xs">Rename</button>
-                  <button title="Shutdown selected notebook(s)" class="shutdown-button btn btn-default btn-xs btn-warning">Shutdown</button>
+                  <button title="Duplicate selected" class="duplicate-button btn btn-default btn-xs">Duplicate 復制</button>
+                  <button title="Rename selected" class="rename-button btn btn-default btn-xs">Rename 重新命名檔案</button>
+                  <button title="Move selected" class="move-button btn btn-default btn-xs">Move 移動</button>
+                  <button title="Download selected" class="download-button btn btn-default btn-xs">Download 下載</button>
+                  <button title="Shutdown selected notebook(s)" class="shutdown-button btn btn-default btn-xs btn-warning">Shutdown 關閉核心</button>
                   <button title="Delete selected" class="delete-button btn btn-default btn-xs btn-danger"><i class="fa fa-trash"></i></button>
               </div>
             </div>
@@ -41,13 +42,13 @@ data-terminals-available="{{terminals_available}}"
                   <span id="notebook_list_info">
                   <span class="btn btn-xs btn-default btn-upload">
                   <input  title="Click to browse for a file to upload." type="file" name="datafile" class="fileinput" multiple='multiple'>
-                  Upload
+                  Upload 上傳
                   </span>
                   </span>
                 </form>
                 <div id="new-buttons" class="btn-group">
                   <button class="dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown">
-                  <span>New</span>
+                  <span>New 開新執行環境</span>
                   <span class="caret"></span>
                   </button>
                   <ul id="new-menu" class="dropdown-menu">
@@ -67,7 +68,7 @@ data-terminals-available="{{terminals_available}}"
                     </li>
                     {% endif %}
                     <li role="presentation" class="divider"></li>
-                    <li role="presentation" class="dropdown-header" id="notebook-kernels">Notebooks</li>
+                    <li role="presentation" class="dropdown-header" id="notebook-kernels">Notebook:</li>
                   </ul>
                 </div>
                 <div class="btn-group">
@@ -101,13 +102,25 @@ data-terminals-available="{{terminals_available}}"
                 {% endfor %}
                 </ul>
               </div>
+              <div id="last_modified" class="pull-right sort_button">
+                  <span class="btn btn-xs btn-default sort-action" id="last-modified">
+                      Last Modified 最後修改時間
+                      <i class="fa fa-arrow-up"></i>
+                  </span>
+              </div>
+              <div id="sort_name" class="pull-right sort_button">
+                  <span class="btn btn-xs btn-default sort-action" id="sort-name">
+                      Name 名稱
+                      <i class="fa fa-arrow-up"></i>
+                  </span>
+              </div>
             </div>
           </div>
         </div>
         <div id="running" class="tab-pane">
           <div id="running_toolbar" class="row">
             <div class="col-sm-8 no-padding">
-              <span id="running_list_info">Currently running Jupyter processes</span>
+              <span id="running_list_info">Currently running Jupyter processes 目前執行中的jupyter程序</span>
             </div>
             <div class="col-sm-4 no-padding tree-buttons">
               <span id="running_buttons" class="pull-right">
@@ -127,7 +140,7 @@ data-terminals-available="{{terminals_available}}"
                   <div id="terminal_list">
                     <div id="terminal_list_header" class="row list_placeholder">
                     {% if terminals_available %}
-                      <div> There are no terminals running. </div>
+                      <div> There are no terminals running. 目前無執行中的終端機程序</div>
                     {% else %}
                       <div> Terminals are unavailable. </div>
                     {% endif %}
@@ -159,7 +172,7 @@ data-terminals-available="{{terminals_available}}"
           See <a href="https://github.com/ipython/ipyparallel">IPython parallel</a> for installation details.
         </div>
       </div><!-- class:tab-content -->
-    </div><!-- id:tab_content --> 
+    </div><!-- id:tab_content -->
   </div><!-- ipython-main-app  -->
 
 {% endblock %}
@@ -167,9 +180,6 @@ data-terminals-available="{{terminals_available}}"
 {% block script %}
     {{super()}}
 
-{% if ignore_minified_js %}
-    <script src="{{ static_url("tree/js/main.js") }}" type="text/javascript" charset="utf-8"></script>
-{% else %}
-    <script src="{{ static_url("tree/js/main.min.js") }}" type="text/javascript" charset="utf-8"></script>
-{% endif %}
+
+<script src="{{ static_url("tree/js/built/main.min.js") }}" type="text/javascript" charset="utf-8"></script>
 {% endblock %}
