@@ -26,12 +26,12 @@ data-terminals-available="{{terminals_available}}"
           <div id="notebook_toolbar" class="row">
             <div class="col-sm-8 no-padding">
               <div class="dynamic-instructions">
-                Select items to perform actions on them.
+                Select items to perform actions on them. 請選擇項目執行動作
               </div>
               <div class="dynamic-buttons">
-                  <button title="Duplicate selected" class="duplicate-button btn btn-default btn-xs">Duplicate</button>
-                  <button title="Rename selected" class="rename-button btn btn-default btn-xs">Rename</button>
-                  <button title="Shutdown selected notebook(s)" class="shutdown-button btn btn-default btn-xs btn-warning">Shutdown</button>
+                  <button title="Duplicate selected" class="duplicate-button btn btn-default btn-xs">Duplicate 復制</button>
+                  <button title="Rename selected" class="rename-button btn btn-default btn-xs">Rename 重新命名檔案</button>
+                  <button title="Shutdown selected notebook(s)" class="shutdown-button btn btn-default btn-xs btn-warning">Shutdown 關閉核心</button>
                   <button title="Delete selected" class="delete-button btn btn-default btn-xs btn-danger"><i class="fa fa-trash"></i></button>
               </div>
             </div>
@@ -41,13 +41,13 @@ data-terminals-available="{{terminals_available}}"
                   <span id="notebook_list_info">
                   <span class="btn btn-xs btn-default btn-upload">
                   <input  title="Click to browse for a file to upload." type="file" name="datafile" class="fileinput" multiple='multiple'>
-                  Upload
+                  Upload 上傳
                   </span>
                   </span>
                 </form>
                 <div id="new-buttons" class="btn-group">
                   <button class="dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown">
-                  <span>New</span>
+                  <span>New 開新執行環境</span>
                   <span class="caret"></span>
                   </button>
                   <ul id="new-menu" class="dropdown-menu">
@@ -107,7 +107,7 @@ data-terminals-available="{{terminals_available}}"
         <div id="running" class="tab-pane">
           <div id="running_toolbar" class="row">
             <div class="col-sm-8 no-padding">
-              <span id="running_list_info">Currently running Jupyter processes</span>
+              <span id="running_list_info">Currently running Jupyter processes 目前執行中的jupyter程序</span>
             </div>
             <div class="col-sm-4 no-padding tree-buttons">
               <span id="running_buttons" class="pull-right">
@@ -127,7 +127,7 @@ data-terminals-available="{{terminals_available}}"
                   <div id="terminal_list">
                     <div id="terminal_list_header" class="row list_placeholder">
                     {% if terminals_available %}
-                      <div> There are no terminals running. </div>
+                      <div> There are no terminals running. 目前無執行中的終端機程序</div>
                     {% else %}
                       <div> Terminals are unavailable. </div>
                     {% endif %}
